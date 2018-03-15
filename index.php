@@ -13,7 +13,29 @@
 
 get_header(); ?>
 
-	<?php if ( ! have_posts() ) : ?>
+<?php
+
+$m_code = '#77';
+
+$stickies = get_option('sticky_posts');
+
+$cover = new WP_Query(
+	array(
+		'category_name' => $m_code,
+		'post__in' => $stickies,
+		'ignore_sticky_posts' => true
+	)
+);
+$magazine = new WP_Query(
+	array( 
+		'category_name' => $m_code, 
+		'post__not_in' => $stickies,
+		'posts_per_page' => 20,
+		'ignore_sticky_posts' => true
+	) 
+);	 
+?>
+	<?php if ( ! $magazine->have_posts() ) : ?>
 	<div class="page-header-wrapper">
 		<div class="container">
 
@@ -37,25 +59,31 @@ get_header(); ?>
 
 				<section id="primary" class="content-area <?php cambium_layout_class( 'content' ); ?>">
 					<main id="main" class="site-main" role="main">
-
-					<?php if ( have_posts() ) : ?>
+						
+					<?php if ( $cover->have_posts() ) : ?>
+						<div class="post-wrapper post-wrapper-single cover">
+							<?php get_template_part( 'template-parts/content', $cover->get_post_format() ); ?>
+						</div>
+					<?php endif ?>
+						
+					<?php if ( $magazine->have_posts() ) : ?>
 
 						<div id="post-wrapper" class="post-wrapper post-wrapper-archive">
 						<?php /* Start the Loop */ ?>
-						<?php while ( have_posts() ) : the_post(); ?>
+						<?php while ( $magazine->have_posts() ) : $magazine->the_post(); ?>
 
 							<?php
 								/* Include the Post-Format-specific template for the content.
 								 * If you want to override this in a child theme, then include a file
 								 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
 								 */
-								get_template_part( 'template-parts/content', get_post_format() );
+								get_template_part( 'template-parts/content', $magazine->get_post_format() );
 							?>
 
 						<?php endwhile; ?>
 						</div><!-- .post-wrapper -->
 
-						<?php cambium_the_posts_pagination(); ?>
+						<?php $magazine->cambium_the_posts_pagination(); ?>
 
 					<?php else : ?>
 
