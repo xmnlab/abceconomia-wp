@@ -1,0 +1,40 @@
+.site-header {
+	background: #090444
+}
+.sf-menu > li.current_page_item > a, .sf-menu > li.current-menu-item > a, .sf-menu > li.current_page_ancestor > a, .sf-menu > li.current-menu-ancestor > a, .sf-menu > li.current-menu-parent > a {
+	color: #ffffff!important;
+}
+
+.sf-menu > li > a, .sf-menu > li > a:visited {
+	color: #aaaaaa;
+}
+
+
+.sf-menu > li > a:hover {
+	color: #ffffff;
+}
+
+.sf-menu > li > a:active {
+	color: #ffffff;
+}
+
+.cover h1 {
+    font-size: 40px!important;
+}
+
+.custom-logo {
+    max-height: none;
+}
+
+.wp-custom-logo .site-header {
+  padding: 0;	
+}
+
+.entry-summary, .entry-summary p {
+	font-size: 14px!important;
+}
+
+.post-wrapper-hentry {
+	margin-bottom: 20px!important;
+	margin-top: 0px!important;
+}
