@@ -62,7 +62,10 @@ $magazine = new WP_Query(
 						
 					<?php if ( $cover->have_posts() ) : ?>
 						<div class="post-wrapper post-wrapper-single cover">
-							<?php get_template_part( 'template-parts/content', $cover->get_post_format() ); ?>
+							<?php 
+							$cover->the_post();
+							get_template_part( 'template-parts/content', $cover->get_post_format() );
+							?>
 						</div>
 					<?php endif ?>
 						
