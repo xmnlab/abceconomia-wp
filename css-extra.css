@@ -5,17 +5,24 @@
 	color: #ffffff!important;
 }
 
+.sf-menu > li:last-child a:not(.sf-with-ul) {
+	padding-right: 17px!important;
+}
+
 .sf-menu > li > a, .sf-menu > li > a:visited {
-	color: #aaaaaa;
+	color: #ffffff;
+	text-align: center!important;
 }
 
 
 .sf-menu > li > a:hover {
-	color: #ffffff;
+	color: #000000!important;
+	background: #ffffff!important;
 }
 
-.sf-menu > li > a:active {
-	color: #ffffff;
+.sf-menu > li > a:active, .sf-menu > li.current_page_item > a {
+	color: #000000!important;
+	background: #ffffff!important;
 }
 
 .cover h1 {
